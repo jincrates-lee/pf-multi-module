@@ -12,6 +12,8 @@ public class OrderDomainMapper {
     public OrderEntity toEntity(Order domain) {
         return OrderEntity.builder()
             .id(domain.id())
+            .status(domain.status())
+            .paymentId(domain.paymentId())
             .build();
     }
 

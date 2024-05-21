@@ -49,11 +49,11 @@ public class OrderUseCaseImpl implements OrderUseCase {
         );
         // PAYMENT 저장
         Payment payment = paymentMapper.toDomain(orderRequest.paymentMethodCode(), transKey);
-        paymentDomainService.save(payment);
+        Payment savedPayment = paymentDomainService.save(payment);
         // ORDER 저장
-        Order order = orderMapper.toOrder(request.orderId(), OrderStatus.PAYMENT_COMPLETED, payment.id());
+        Order order = orderMapper.toOrder(request.orderId(), OrderStatus.PAYMENT_COMPLETED, savedPayment.id());
         orderDomainService.saveOrder(order);
-        return orderMapper.toResponse(order, payment);
+        return orderMapper.toResponse(order, savedPayment);
     }
 
     /**

@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/orders")
 @RequiredArgsConstructor
+@RequestMapping("/api/v1/orders")
 public class OrderApi extends BaseController {
     private final OrderUseCase orderUseCase;
     @PostMapping("/prepare")

@@ -10,6 +10,8 @@ public class PaymentDomainMapper {
     public PaymentEntity toEntity(Payment domain) {
         return PaymentEntity.builder()
                 .id(domain.id())
+                .paymentMethodCode(domain.paymentMethodCode())
+                .transKey(domain.transKey())
                 .build();
     }
 
