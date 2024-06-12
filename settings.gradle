@@ -1,15 +1,23 @@
 pluginManagement {
-  plugins {
-    id 'org.springframework.boot' version "${springBootVersion}"
-    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
-  }
+    plugins {
+        id 'org.springframework.boot' version "${springBootVersion}"
+        id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    }
 }
 
 rootProject.name = 'pf-multi-module'
 
 include 'domain'
-include 'api-client'
+include 'api'
 include 'worker'
 include 'infrastructure'
 include 'batch'
+
+include 'infrastructure'
+//include 'infrastructure:persistence'
+//findProject(':infrastructure:persistence')?.name = 'persistence'
+//include 'infrastructure:pg'
+//findProject(':infrastructure:pg')?.name = 'pg'
+//include 'infrastructure:messaging'
+//findProject(':infrastructure:messaging')?.name = 'messaging'
 

@@ -1,4 +1,6 @@
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly "com.h2database:h2:$h2DatabaseVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+
+    compileOnly("org.springframework:spring-context")
+    compileOnly("org.springframework:spring-tx")
 }
