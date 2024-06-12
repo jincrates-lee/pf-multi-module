@@ -5,14 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import me.jincrates.domain.core.entity.Order;
 import me.jincrates.domain.persistence.OrderReader;
 import me.jincrates.domain.persistence.OrderWriter;
-import me.jincrates.persistence.mapper.OrderPersistenceMapper;
-import me.jincrates.persistence.repository.OrderJpaRepository;
+import me.jincrates.infrastructure.persistence.mapper.OrderPersistenceMapper;
+import me.jincrates.infrastructure.persistence.repository.OrderJpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Slf4j
 @Repository
 @RequiredArgsConstructor
-public class OrderRepositoryImpl implements OrderReader, OrderWriter {
+public class OrderRepository implements OrderReader, OrderWriter {
 
     private final OrderJpaRepository orderJpaRepository;
     private final OrderPersistenceMapper orderPersistenceMapper;
