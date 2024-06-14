@@ -1,9 +1,9 @@
 package me.jincrates.infrastructure.persistence.mapper;
 
 import me.jincrates.domain.core.entity.Order;
-import me.jincrates.domain.core.entity.OrderEntity;
 import me.jincrates.domain.core.entity.OrderRequest;
-import me.jincrates.domain.core.entity.OrderRequestEntity;
+import me.jincrates.infrastructure.persistence.entity.OrderEntity;
+import me.jincrates.infrastructure.persistence.entity.OrderRequestEntity;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,4 +1,4 @@
-package me.jincrates.apiclient;
+package me.jincrates.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @EntityScan(basePackages = "me.jincrates.domain.core.entity")
-@EnableJpaRepositories(basePackages = "me.jincrates.domain.core.repository")
+@EnableJpaRepositories(basePackages = "me.jincrates.infrastructure.persistence.repository")
 @ComponentScan(basePackages = "me.jincrates")
 @SpringBootApplication
 public class ApiApplication {

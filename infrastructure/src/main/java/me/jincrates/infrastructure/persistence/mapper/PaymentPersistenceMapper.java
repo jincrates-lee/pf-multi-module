@@ -1,7 +1,7 @@
 package me.jincrates.infrastructure.persistence.mapper;
 
 import me.jincrates.domain.core.entity.Payment;
-import me.jincrates.domain.core.entity.PaymentEntity;
+import me.jincrates.infrastructure.persistence.entity.PaymentEntity;
 import org.springframework.stereotype.Component;
 
 @Component
