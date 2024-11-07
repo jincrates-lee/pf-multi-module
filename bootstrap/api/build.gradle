@@ -1,0 +1,16 @@
+dependencies {
+
+    implementation project(":application:usecase")
+    compileOnly project(":application:port")
+    compileOnly project(":domain")
+    compileOnly project(":infrastructure:dataaccess")
+
+    implementation "org.springframework.boot:spring-boot-starter-web"
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //implementation 'org.springframework.boot:spring-boot-starter-security'
+    //testImplementation 'org.springframework.security:spring-security-test'
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+    runtimeOnly "com.h2database:h2:${h2DatabaseVersion}"
+}

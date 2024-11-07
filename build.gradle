@@ -27,7 +27,6 @@ subprojects {
     }
 
     dependencies {
-        testImplementation 'org.springframework.boot:spring-boot-starter-test'
         // lombok
         compileOnly "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
@@ -35,10 +34,10 @@ subprojects {
         implementation "org.slf4j:slf4j-api:${slf4jVersion}"
         // mockito
         testImplementation "org.mockito:mockito-core:${mockitoVersion}"
+        // jackson
+        implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+        implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${jacksonDatabindVersion}"
     }
-
-    bootJar.enabled = false
-    jar.enabled = true
 
     test {
         useJUnitPlatform {

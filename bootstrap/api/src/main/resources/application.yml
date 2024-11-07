@@ -1,0 +1,122 @@
+spring.application.name: pf-multi-module
+spring.profiles.active: local
+
+server:
+  port: 8090
+  tomcat:
+    max-connections: 20000
+    threads:
+      max: 600
+      min-spare: 100
+
+spring:
+  thymeleaf:
+    cache: false
+
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.default_batch_fetch_size: 1000
+
+  kafka:
+    bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      num-of-partitions: 3
+      replication-factor: 3
+      group-id: event-consumer
+    listener:
+      ack-mode: manual
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+logging:
+  level:
+    org:
+      apache:
+        kafka: OFF
+      thymeleaf: ERROR
+
+# path: /actuator/health
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+
+---
+spring.config.activate.on-profile: local
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        highlight_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+---
+spring.config.activate.on-profile: prod
+
+---
+spring.config.activate.on-profile: test
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        highlight_sql: true
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  #    url: jdbc:tc:mariadb://localhost:3306/testdb
+  #    driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
+
+
+  sql:
+    init:
+      mode: never
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      group-id: test-event-consumer
+    listener:
+      ack-mode: manual
+
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379

@@ -1,0 +1,17 @@
+### 주문 생성
+POST {{backend-api}}/api/v1/orders
+Content-Type: application/json
+
+{
+  "status": "REQUESTED"
+}
+
+> {%
+  const orderCode = response.body.code;
+  client.log("orderCode: " + orderCode);
+  client.global.set("orderCode", orderCode);
+%}
+
+### 주문 조회
+GET {{backend-api}}/api/v1/orders/{{orderCode}}
+Content-Type: application/json
