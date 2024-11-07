@@ -3,6 +3,7 @@ plugins {
     id 'org.springframework.boot' apply(false)
     id 'io.spring.dependency-management'
     id 'com.savvasdalkitsis.module-dependency-graph' version "${moduleDependencyGraph}"
+    id("dev.iurysouza.modulegraph") version "${moduleGraphVersion}"
 }
 
 allprojects {
@@ -44,4 +45,10 @@ subprojects {
             excludeTags('develop')
         }
     }
+}
+
+moduleGraphConfig {
+    readmePath.set("${rootDir}/README.md")
+    heading.set("### Module Graph")
+    showFullPath.set(false)
 }
