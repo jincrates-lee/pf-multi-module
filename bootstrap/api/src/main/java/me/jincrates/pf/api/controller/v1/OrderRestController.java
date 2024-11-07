@@ -1,9 +1,12 @@
 package me.jincrates.pf.api.controller.v1;
 
 import lombok.RequiredArgsConstructor;
+import me.jincrates.pf.api.controller.ApiResponse;
+import me.jincrates.pf.api.controller.BaseController;
 import me.jincrates.pf.application.usecase.OrderUseCase;
 import me.jincrates.pf.application.usecase.dto.CreateOrderCommand;
 import me.jincrates.pf.application.usecase.dto.OrderResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,26 +15,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/orders")
-public class OrderRestController {
+public class OrderRestController extends BaseController {
 
     private final OrderUseCase orderUseCase;
 
     @PostMapping
-    public OrderResponse createOrder(
+    public ResponseEntity<ApiResponse<OrderResponse>> createOrder(
         @Validated @RequestBody
         CreateOrderCommand command
     ) {
-        return orderUseCase.saveOrder(command);
+        OrderResponse response = orderUseCase.saveOrder(command);
+        return create(
+            "주문 생성",
+            response
+        );
     }
 
     @GetMapping("/{orderCode}")
-    public OrderResponse getOrder(
+    public ResponseEntity<ApiResponse<OrderResponse>> getOrder(
         @PathVariable(name = "orderCode") String orderCode
     ) {
-        return orderUseCase.getOrderByCode(orderCode);
+        return ok(
+            "주문 조회",
+            orderUseCase.getOrderByCode(orderCode)
+        );
     }
 }

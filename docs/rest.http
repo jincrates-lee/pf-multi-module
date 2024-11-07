@@ -7,7 +7,7 @@ Content-Type: application/json
 }
 
 > {%
-  const orderCode = response.body.code;
+  const orderCode = response.body.data.code;
   client.log("orderCode: " + orderCode);
   client.global.set("orderCode", orderCode);
 %}
