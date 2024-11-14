@@ -1,7 +1,6 @@
 dependencies {
     // module dependency
-    implementation(project(":application:port"))
-    compileOnly(project(":domain"))
+    implementation(project(":core:domain"))
 
     // spring boot
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'

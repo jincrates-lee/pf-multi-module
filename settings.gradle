@@ -7,15 +7,15 @@ pluginManagement {
 
 rootProject.name = 'pf-multi-module'
 
-// domain
-include 'domain'
+// common
+include 'common'
 
-// application
-include 'application'
-include 'application:usecase'
-findProject(':application:usecase')?.name = 'usecase'
-include 'application:port'
-findProject(':application:port')?.name = 'port'
+// core
+include 'core'
+include 'core:usecase'
+findProject(':core:usecase')?.name = 'usecase'
+include 'core:domain'
+findProject(':core:domain')?.name = 'domain'
 
 // infrastructure
 include 'infrastructure'
@@ -26,5 +26,8 @@ findProject(':infrastructure:dataaccess')?.name = 'dataaccess'
 include 'bootstrap'
 include 'bootstrap:api'
 findProject(':bootstrap:api')?.name = 'api'
+
+
+
 
 

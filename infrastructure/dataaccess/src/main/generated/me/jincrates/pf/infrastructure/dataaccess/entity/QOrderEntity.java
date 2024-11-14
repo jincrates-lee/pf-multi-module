@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.processing.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -23,7 +24,11 @@ public class QOrderEntity extends EntityPathBase<OrderEntity> {
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
-    public final EnumPath<me.jincrates.domain.enums.OrderStatus> status = createEnum("status", me.jincrates.domain.enums.OrderStatus.class);
+    public final ListPath<OrderProductEntity, QOrderProductEntity> products = this.<OrderProductEntity, QOrderProductEntity>createList("products", OrderProductEntity.class, QOrderProductEntity.class, PathInits.DIRECT2);
+
+    public final EnumPath<me.jincrates.pf.core.domain.enums.OrderStatus> status = createEnum("status", me.jincrates.pf.core.domain.enums.OrderStatus.class);
+
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public QOrderEntity(String variable) {
         super(OrderEntity.class, forVariable(variable));

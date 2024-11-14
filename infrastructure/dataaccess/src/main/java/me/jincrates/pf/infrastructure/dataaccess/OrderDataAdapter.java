@@ -3,9 +3,9 @@ package me.jincrates.pf.infrastructure.dataaccess;
 import jakarta.persistence.EntityNotFoundException;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import me.jincrates.common.annotation.Adapter;
-import me.jincrates.domain.model.Order;
-import me.jincrates.pf.application.port.OrderDataPort;
+import me.jincrates.pf.common.annotation.Adapter;
+import me.jincrates.pf.core.domain.model.Order;
+import me.jincrates.pf.core.port.dataaccess.OrderDataPort;
 import me.jincrates.pf.infrastructure.dataaccess.entity.OrderEntity;
 import me.jincrates.pf.infrastructure.dataaccess.mapper.OrderDataMapper;
 import me.jincrates.pf.infrastructure.dataaccess.repository.OrderJpaRepository;
@@ -18,7 +18,8 @@ class OrderDataAdapter implements OrderDataPort {
 
     @Override
     public Order saveOrder(Order order) {
-        OrderEntity savedEntity = repository.save(OrderDataMapper.toEntity(order));
+        OrderEntity entity = OrderDataMapper.toEntity(order);
+        OrderEntity savedEntity = repository.save(entity);
         return OrderDataMapper.toDomain(savedEntity);
     }
 

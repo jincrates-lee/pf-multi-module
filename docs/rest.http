@@ -3,7 +3,17 @@ POST {{backend-api}}/api/v1/orders
 Content-Type: application/json
 
 {
-  "status": "REQUESTED"
+  "userId": 1,
+  "products": [
+    {
+      "productId": 1,
+      "quantity": 2
+    },
+    {
+      "productId": 2,
+      "quantity": 3
+    }
+  ]
 }
 
 > {%

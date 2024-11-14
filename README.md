@@ -8,25 +8,22 @@
 }%%
 
 graph LR
-  subgraph :application
-    :application:port["port"]
-    :application:usecase["usecase"]
-  end
   subgraph :bootstrap
     :bootstrap:api["api"]
+  end
+  subgraph :core
+    :core:usecase["usecase"]
+    :core:domain["domain"]
   end
   subgraph :infrastructure
     :infrastructure:dataaccess["dataaccess"]
   end
-  :application:port --> :domain
-  :bootstrap:api --> :application:usecase
-  :bootstrap:api --> :application:port
-  :bootstrap:api --> :domain
+  :core:usecase --> :core:domain
+  :bootstrap:api --> :core:usecase
+  :bootstrap:api --> :core:domain
   :bootstrap:api --> :infrastructure:dataaccess
-  :infrastructure:dataaccess --> :domain
-  :infrastructure:dataaccess --> :application:port
-  :application:usecase --> :application:port
-  :application:usecase --> :domain
+  :core:domain --> :common
+  :infrastructure:dataaccess --> :core:domain
 ```
 # Post-Order 멀티모듈 예제
 
