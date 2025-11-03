@@ -1,0 +1,9 @@
+api-module:
+  - changed-files:
+      - all-globs-to-all-files: "**/*"
+      - all-globs-to-all-files: "!bootstrap/api/**/*"
+
+worker-module:
+  - changed-files:
+      - all-globs-to-all-files: "**/*"
+      - all-globs-to-all-files: "!bootstrap/worker/**/*"
