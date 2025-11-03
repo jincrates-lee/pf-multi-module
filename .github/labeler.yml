@@ -1,7 +1,20 @@
 api-module:
   - changed-files:
-      - any-glob-to-any-file: "bootstrap/api/**/*"
-
+      - any-glob-to-any-file:
+          - "bootstrap/api/**/*"
+          - "core/**/*"
+          - "infrastructure/**/*"
+          - ".github/**"
+          - "*.gradle"
+          - "*.properties"
 worker-module:
   - changed-files:
-      - any-glob-to-any-file: "bootstrap/worker/**/*"
+      - any-glob-to-any-file:
+          - "bootstrap/worker/**/*"
+          - "core/**/*"
+          - "infrastructure/**/*"
+          - ".github/**"
+          - "*.gradle"
+          - "*.properties"
+
+
